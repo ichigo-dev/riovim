@@ -1,0 +1,5 @@
+# RioVim
+
+## Requirement
+
+- ripgrep
