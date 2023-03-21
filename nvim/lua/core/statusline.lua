@@ -92,14 +92,14 @@ local comps = {
                 return icon .. " " .. type .. " "
             end,
             hl = {
-                bg = colors.cyan,
+                bg = colors.fg,
                 fg = colors.bg,
                 style = "bold",
             },
             left_sep = {
                 str = " ",
                 hl = {
-                    fg = colors.cyan,
+                    fg = colors.fg,
                     style = "bold",
                 },
             },
@@ -120,15 +120,15 @@ local comps = {
                 return icon
             end,
             hl = {
-                bg = colors.green,
+                bg = colors.fg,
                 fg = colors.bg,
                 style = "bold",
             },
             left_sep = {
-                str = "",
+                str = "",
                 hl = {
-                    bg = colors.cyan,
-                    fg = colors.green,
+                    bg = colors.fg,
+                    fg = colors.bg,
                     style = "bold",
                 },
             },
@@ -138,15 +138,15 @@ local comps = {
         encoding = {
             provider = { name = "file_encoding" },
             hl = {
-                bg = colors.green,
+                bg = colors.fg,
                 fg = colors.bg,
                 style = "bold",
             },
             right_sep = {
                 str = " ",
                 hl = {
-                    bg = colors.green,
-                    fg = colors.red,
+                    bg = colors.fg,
+                    fg = colors.cyan,
                     style = "bold",
                 },
             },
@@ -156,20 +156,20 @@ local comps = {
         position = {
             provider = { name = "position" },
             hl = {
-                bg = colors.red,
+                bg = colors.cyan,
                 fg = colors.bg,
                 style = "bold",
             },
             left_sep = {
                 str = " ",
                 hl = {
-                    bg = colors.red,
+                    bg = colors.cyan,
                 },
             },
             right_sep = {
                 str = " ",
                 hl = {
-                    bg = colors.red,
+                    bg = colors.cyan,
                 },
             },
         },
@@ -178,11 +178,16 @@ local comps = {
         line_percentage = {
             provider = { name = "line_percentage" },
             hl = {
-                fg = colors.cyan,
+                bg = colors.cyan,
+                fg = colors.bg,
                 style = "bold",
             },
-            left_sep = " ",
-            right_sep = " ",
+            right_sep = {
+                str = " ",
+                hl = {
+                    bg = colors.cyan,
+                },
+            },
         },
 
         -- Simple scrollbar
