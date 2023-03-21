@@ -8,7 +8,7 @@ if not status_ok then
 end
 
 -- Theme
-local colors = require("core/colors").edge_dark
+local colors = require("core/colors").nord
 
 local vi_mode_colors = {
     NORMAL = colors.cyan,
@@ -37,8 +37,6 @@ local lsp_get_diag = function(str)
     return (count > 0) and " "..count.." " or ""
 end
 
-local separator = "|"
-
 -- Components
 local comps = {
 
@@ -46,19 +44,19 @@ local comps = {
     vi_mode = {
         left = {
             provider = function()
-	        local label = " "..vi_mode_utils.get_vim_mode().." " 
-	        return label
-	    end,
-	    hl = function()
-	        local set_color = {
-		    name = vi_mode_utils.get_mode_highlight_name(),
-		    fg = colors.bg, 
-		    bg = vi_mode_utils.get_mode_color(), 
-		    style = "bold",
-		}
-		return set_color
-	    end,
-            right_sep = " ",
+                local label = " " .. vi_mode_utils.get_vim_mode() .. " " 
+                return label
+            end,
+            hl = function()
+                local set_color = {
+                name = vi_mode_utils.get_mode_highlight_name(),
+                fg = colors.bg,
+                bg = vi_mode_utils.get_mode_color(),
+                style = "bold",
+            }
+            return set_color
+        end,
+        right_sep = " ",
         }
     },
 
@@ -75,7 +73,8 @@ local comps = {
                 }
             },
             hl = {
-                fg = colors.cyan,
+                fg = colors.fg,
+                bg = colors.bg,
                 style = "bold",
             },
             icon = "",
@@ -90,20 +89,20 @@ local comps = {
                 if icon == nil then
                     icon = " "
                 end
-                return " " .. icon .. " " .. type
+                return icon .. " " .. type .. " "
             end,
             hl = {
-                fg = colors.fg,
+                bg = colors.cyan,
+                fg = colors.bg,
                 style = "bold",
             },
             left_sep = {
-                str = " " .. separator,
+                str = " ",
                 hl = {
-                    fg = colors.fg,
+                    fg = colors.cyan,
                     style = "bold",
                 },
             },
-            righ_sep = " ",
         },
 
         -- Operating System
@@ -121,13 +120,15 @@ local comps = {
                 return icon
             end,
             hl = {
-                fg = colors.fg,
+                bg = colors.green,
+                fg = colors.bg,
                 style = "bold",
             },
             left_sep = {
-                str = " " .. separator,
+                str = "",
                 hl = {
-                    fg = colors.fg,
+                    bg = colors.cyan,
+                    fg = colors.green,
                     style = "bold",
                 },
             },
@@ -137,13 +138,15 @@ local comps = {
         encoding = {
             provider = { name = "file_encoding" },
             hl = {
-                fg = colors.fg,
+                bg = colors.green,
+                fg = colors.bg,
                 style = "bold",
             },
             right_sep = {
-                str = " " .. separator,
+                str = " ",
                 hl = {
-                    fg = colors.fg,
+                    bg = colors.green,
+                    fg = colors.red,
                     style = "bold",
                 },
             },
@@ -153,11 +156,22 @@ local comps = {
         position = {
             provider = { name = "position" },
             hl = {
-                fg = colors.fg,
+                bg = colors.red,
+                fg = colors.bg,
                 style = "bold",
             },
-            left_sep = " ",
-            right_sep = " ",
+            left_sep = {
+                str = " ",
+                hl = {
+                    bg = colors.red,
+                },
+            },
+            right_sep = {
+                str = " ",
+                hl = {
+                    bg = colors.red,
+                },
+            },
         },
 
         -- Cursor position in %

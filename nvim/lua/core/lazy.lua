@@ -30,9 +30,14 @@ lazy.setup({
 
         -- Colorschemes
         {
-            "sainnhe/edge",
+            "arcticicestudio/nord-vim",
             lazy = false,
             priority = 1000,
+        },
+
+        {
+            "sainnhe/edge",
+            lazy = true,
         },
 
         {
