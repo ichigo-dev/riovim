@@ -50,7 +50,6 @@ lazy.setup({
             lazy = true,
         },
 
-        -- other colorschemes
         {
             "tanvirtin/monokai.nvim",
             lazy = true,
@@ -148,6 +147,12 @@ lazy.setup({
             "nvim-telescope/telescope.nvim",
             lazy = false,
             dependencies = { 'nvim-lua/plenary.nvim' },
+        },
+
+        -- Git
+        {
+            "tpope/vim-fugitive",
+            lazy = false,
         },
     },
 })

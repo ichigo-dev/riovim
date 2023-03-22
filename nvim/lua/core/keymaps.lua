@@ -18,9 +18,6 @@ map("n", "n", "nzz")
 map("n", "N", "Nzz")
 map("n", "<Esc><Esc>", ":noh<CR>")
 
--- terminal
-map("n", "<Space>t", ":terminal ")
-
 -- copy and paste
 map("n", "<Space>p", '"+p')
 map("n", "<Space>y", '"+y')
