@@ -87,9 +87,9 @@ local comps = {
                 local extension = vim.fn.expand "%:e"
                 local icon = require("nvim-web-devicons").get_icon(extension)
                 if icon == nil then
-                    icon = " "
+                    icon = ""
                 end
-                return icon .. " " .. type .. " "
+                return " " .. icon .. " " .. type .. " "
             end,
             hl = {
                 bg = colors.fg,
