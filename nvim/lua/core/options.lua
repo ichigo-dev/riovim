@@ -15,14 +15,18 @@ opt.clipboard = "unnamedplus"
 opt.swapfile = false
 opt.completeopt = "menuone,noinsert,noselect"
 
-vim.o.cursorline = true
-vim.o.whichwrap = "b,s,<,>,~,[,]"
-vim.o.virtualedit = "onemore"
+opt.cursorline = true
+opt.whichwrap = "b,s,<,>,~,[,]"
+opt.virtualedit = "onemore"
 
 -- file
 opt.encoding = "utf-8"
 opt.fileencodings = "utf-8,enc-jp,iso-20220-jp"
 opt.fileformats = "unix,mac,dos"
+
+-- timeout
+opt.timeout = true
+opt.timeoutlen = 300
 
 -----------------------------------------------------------
 -- Neovim UI
@@ -78,8 +82,10 @@ opt.updatetime = 250
 -----------------------------------------------------------
 -- Startup
 -----------------------------------------------------------
+
 -- Disable nvim intro
 opt.shortmess:append "sI"
+
 
 -- -- Disable builtin plugins
 local disabled_built_ins = {

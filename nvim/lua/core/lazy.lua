@@ -84,7 +84,7 @@ lazy.setup({
         -- FileTree
         {
             "kyazdani42/nvim-tree.lua",
-            lazy = false,
+            cmd = { "NvimTreeToggle", "NvimTreeFocus" },
             dependencies = { "kyazdani42/nvim-web-devicons" },
             config = function()
                 require("nvim-tree").setup()
@@ -104,7 +104,7 @@ lazy.setup({
         -- Treesitter
         {
             "nvim-treesitter/nvim-treesitter",
-            lazy = false,
+            cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
             build = ":TSUpdate",
         },
 
@@ -122,7 +122,10 @@ lazy.setup({
 
         {
             "williamboman/mason.nvim",
-            lazy = false,
+            cmd = {
+                "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall",
+                "MasonUninstallAll", "MasonLog",
+            },
             config = function()
                 require("mason").setup()
             end,
@@ -131,27 +134,32 @@ lazy.setup({
         -- Autocomplete
         {
             "hrsh7th/nvim-cmp",
-            lazy = false,
             event = "InsertEnter",
             dependencies = {
-                "L3MON4D3/LuaSnip",
+                "saadparwaiz1/cmp_luasnip",
                 "hrsh7th/cmp-nvim-lsp",
+                "hrsh7th/cmp-nvim-lua",
                 "hrsh7th/cmp-path",
                 "hrsh7th/cmp-buffer",
-                "saadparwaiz1/cmp_luasnip",
             },
         },
 
         -- Fazzy finder
         {
             "nvim-telescope/telescope.nvim",
-            lazy = false,
+            cmd = "Telescope",
             dependencies = { 'nvim-lua/plenary.nvim' },
         },
 
         -- Git
         {
             "tpope/vim-fugitive",
+            lazy = false,
+        },
+
+        -- Which key
+        {
+            "folke/which-key.nvim",
             lazy = false,
         },
     },
