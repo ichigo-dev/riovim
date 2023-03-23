@@ -139,7 +139,7 @@ nvim_tree.setup {
     update_focused_file = {
         enable = true,
         update_root = true,
-        ignore_list = {},
+        ignore_list = { "term" },
     },
     ignore_ft_on_setup = {},
     system_open = {
