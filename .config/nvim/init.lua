@@ -2,6 +2,7 @@
 -- RioVim
 --------------------------------------------------------------------------------
 
+if vim.loader then vim.loader.enable() end
 require("core/lazy")
 require("core/autocmds")
 require("core/keymaps")
