@@ -141,7 +141,6 @@ nvim_tree.setup {
         update_root = true,
         ignore_list = { "term" },
     },
-    ignore_ft_on_setup = {},
     system_open = {
         cmd = "",
         args = {},
