@@ -162,5 +162,14 @@ lazy.setup({
             "folke/which-key.nvim",
             lazy = false,
         },
+
+        -- Markdown
+        {
+            "previm/previm",
+            lazy = false,
+            config = function()
+                vim.g.previm_open_cmd = "firefox"
+            end,
+        },
     },
 })
