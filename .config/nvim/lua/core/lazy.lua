@@ -157,6 +157,12 @@ lazy.setup({
             lazy = false,
         },
 
+        -- GitHub copilot
+        {
+            "github/copilot.vim",
+            lazy = false,
+        },
+
         -- Which key
         {
             "folke/which-key.nvim",
