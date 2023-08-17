@@ -171,6 +171,14 @@ lazy.setup({
 
         -- Markdown
         {
+            "preservim/vim-markdown",
+            lazy = false,
+            config = function()
+                vim.g.vim_markdown_folding_disabled = 1
+            end,
+        },
+
+        {
             "previm/previm",
             lazy = false,
             config = function()
