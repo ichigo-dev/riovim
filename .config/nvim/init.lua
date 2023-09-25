@@ -13,6 +13,7 @@ require("core/statusline")
 -- Plugins
 require("plugins/alpha_nvim")
 require("plugins/indent_blankline")
+require("plugins/lspconfig")
 require("plugins/nvim_cmp")
 require("plugins/nvim_tree")
 require("plugins/nvim_treesitter")

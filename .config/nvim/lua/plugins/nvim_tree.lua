@@ -52,7 +52,6 @@ nvim_tree.setup {
         cursorline = true,
         debounce_delay = 15,
         width = 34,
-        hide_root_folder = false,
         side = "left",
         preserve_window_proportions = false,
         number = false,
@@ -91,7 +90,7 @@ nvim_tree.setup {
         },
         icons = {
             webdev_colors = true,
-            git_placement = "before",
+            git_placement = "after",
             modified_placement = "after",
             padding = " ",
             symlink_arrow = " ➛ ",

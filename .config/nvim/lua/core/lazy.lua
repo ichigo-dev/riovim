@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
--- RioVIm plugin manager
+-- RioVim plugin manager
 --
 -- Plugin manager: lazy.nvim
 -- URL: https://github.com/folke/lazy.nvim
@@ -35,37 +35,49 @@ lazy.setup({
             priority = 1000,
         },
 
-        {
-            "sainnhe/edge",
-            lazy = true,
-        },
+        -- {
+        --     "sainnhe/edge",
+        --     lazy = true,
+        -- },
 
-        {
-            "navarasu/onedark.nvim",
-            lazy = true,
-        },
+        -- {
+        --     "navarasu/onedark.nvim",
+        --     lazy = true,
+        -- },
 
-        {
-            "cocopon/iceberg.vim",
-            lazy = true,
-        },
+        -- {
+        --     "cocopon/iceberg.vim",
+        --     lazy = true,
+        -- },
 
-        {
-            "tanvirtin/monokai.nvim",
-            lazy = true,
-        },
+        -- {
+        --     "tanvirtin/monokai.nvim",
+        --     lazy = true,
+        -- },
 
         -- Icons
         {
-            "kyazdani42/nvim-web-devicons",
+            "nvim-tree/nvim-web-devicons",
             lazy = true,
+            config = function()
+                require("nvim-web-devicons").setup {
+                    strict = true,
+                    override_by_extension = {
+                        ["txt"] = {
+                            icon = "",
+                            color = "#ffffff",
+                            name = "txt"
+                        },
+                    },
+                }
+            end,
         },
 
         -- Dashboard
         {
             "goolord/alpha-nvim",
             lazy = true,
-            dependencies = { "kyazdani42/nvim-web-devicons" },
+            dependencies = { "nvim-tree/nvim-web-devicons" },
         },
 
         -- Git labels
@@ -74,7 +86,7 @@ lazy.setup({
             lazy = true,
             dependencies = {
                 "nvim-lua/plenary.nvim",
-                "kyazdani42/nvim-web-devicons",
+                "nvim-tree/nvim-web-devicons",
             },
             config = function()
                 require("gitsigns").setup()
@@ -83,9 +95,9 @@ lazy.setup({
 
         -- FileTree
         {
-            "kyazdani42/nvim-tree.lua",
+            "nvim-tree/nvim-tree.lua",
             cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-            dependencies = { "kyazdani42/nvim-web-devicons" },
+            dependencies = { "nvim-tree/nvim-web-devicons" },
             config = function()
                 require("nvim-tree").setup()
             end,
@@ -96,7 +108,7 @@ lazy.setup({
             "freddiehaddad/feline.nvim",
             lazy = false,
             dependencies = {
-                "kyazdani42/nvim-web-devicons",
+                "nvim-tree/nvim-web-devicons",
                 "lewis6991/gitsigns.nvim",
             },
         },
@@ -131,6 +143,8 @@ lazy.setup({
             end,
         },
 
+        { "williamboman/mason-lspconfig.nvim" },
+
         -- Autocomplete
         {
             "hrsh7th/nvim-cmp",
@@ -148,7 +162,19 @@ lazy.setup({
         {
             "nvim-telescope/telescope.nvim",
             cmd = "Telescope",
-            dependencies = { 'nvim-lua/plenary.nvim' },
+            dependencies = { "nvim-lua/plenary.nvim" },
+            config = function()
+                require("telescope").setup {
+                    defaults = {
+                        mappings = {
+                            i = {
+                                ["<C-d>"] = require("telescope.actions").preview_scrolling_up,
+                                ["<C-f>"] = require("telescope.actions").preview_scrolling_down,
+                            },
+                        },
+                    },
+                }
+            end,
         },
 
         -- Git
@@ -157,15 +183,15 @@ lazy.setup({
             lazy = false,
         },
 
-        -- GitHub copilot
-        {
-            "github/copilot.vim",
-            lazy = false,
-        },
-
         -- Which key
         {
             "folke/which-key.nvim",
+            lazy = false,
+        },
+
+        -- GitHub copilot
+        {
+            "github/copilot.vim",
             lazy = false,
         },
 
