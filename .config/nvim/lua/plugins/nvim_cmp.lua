@@ -12,6 +12,11 @@ if not luasnip_status_ok then
     return
 end
 
+local lspkind_status_ok, lspkind = pcall(require, "lspkind")
+if not lspkind_status_ok then
+    return
+end
+
 local function border(hl_name)
     return {
         { "╭", hl_name },
@@ -90,5 +95,13 @@ cmp.setup {
         { name = "nvim_lsp" },
         { name = "path" },
         { name = "buffer" },
+    },
+
+    -- Icons
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = "symbol",
+            ellipsis_char = "...",
+        }),
     },
 }

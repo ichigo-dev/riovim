@@ -144,6 +144,7 @@ lazy.setup({
         },
 
         { "williamboman/mason-lspconfig.nvim" },
+        { "onsails/lspkind.nvim" },
 
         -- Autocomplete
         {
