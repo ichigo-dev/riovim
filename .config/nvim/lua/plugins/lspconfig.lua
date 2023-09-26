@@ -20,9 +20,16 @@ end
 capabilities = cmp_nvim_lsp.default_capabilities()
 mason_lspconfig.setup_handlers {
     function(server_name)
-        lspconfig[server_name].setup {
-            capabilities = capabilities,
-        }
+        if server_name == "intelephense" then
+            lspconfig[server_name].setup {
+                capabilities = capabilities,
+                cmd = { "env", "HOME=/tmp", "intelephense", "--stdio" },
+            }
+        else
+            lspconfig[server_name].setup {
+                capabilities = capabilities,
+            }
+        end
     end,
 }
 
