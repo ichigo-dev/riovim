@@ -120,12 +120,6 @@ lazy.setup({
             build = ":TSUpdate",
         },
 
-        -- Indent line
-        {
-            "lukas-reineke/indent-blankline.nvim",
-            lazy = false,
-        },
-
         -- LSP
         {
             "neovim/nvim-lspconfig",
