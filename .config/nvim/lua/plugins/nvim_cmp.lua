@@ -67,26 +67,6 @@ cmp.setup {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         },
-
-        -- Tab mapping
-        -- ["<Tab>"] = function(fallback)
-        --     if cmp.visible() then
-        --         cmp.select_next_item()
-        --     elseif luasnip.expand_or_jumpable() then
-        --         luasnip.expand_or_jump()
-        --     else
-        --         fallback()
-        --     end
-        -- end,
-        -- ["<S-Tab>"] = function(fallback)
-        --     if cmp.visible() then
-        --         cmp.select_prev_item()
-        --     elseif luasnip.jumpable(-1) then
-        --         luasnip.jump(-1)
-        --     else
-        --         fallback()
-        --     end
-        -- end,
     },
 
     -- Load sources, see: https://github.com/topics/nvim-cmp
@@ -99,9 +79,16 @@ cmp.setup {
 
     -- Icons
     formatting = {
-        format = lspkind.cmp_format({
-            mode = "symbol",
-            ellipsis_char = "...",
-        }),
+        fields = { 'abbr', 'menu' },
+        format = function(entry, item)
+            local menu_icon = {
+                luasnip = '⋗',
+                nvim_lsp = 'λ',
+                path = '🖫',
+                buffer = 'Ω',
+            }
+            item.menu = menu_icon[entry.source.name]
+            return item
+        end,
     },
 }
