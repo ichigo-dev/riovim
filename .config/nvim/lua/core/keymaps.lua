@@ -17,6 +17,7 @@ vim.g.mapleader = " "
 map("n", "n", "nzz")
 map("n", "N", "Nzz")
 map("n", "<Esc><Esc>", ":noh<CR>")
+map("i", "jj", "<Esc>")
 
 -- copy and paste
 map("n", "<Leader>p", '"+p')
