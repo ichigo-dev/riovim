@@ -26,3 +26,4 @@ autocmd("BufEnter", {
 })
 
 autocmd("TermClose", { command = "q" })
+autocmd("TermClose", { command = "bdelete bprevious" })

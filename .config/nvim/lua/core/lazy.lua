@@ -116,10 +116,11 @@ lazy.setup({
             end,
         },
 
-        -- Tab
+        -- Bufferline
         {
-            "romgrk/barbar.nvim",
+            "akinsho/bufferline.nvim",
             lazy = false,
+            dependencies = { "nvim-tree/nvim-web-devicons" },
         },
 
         -- Statusline
