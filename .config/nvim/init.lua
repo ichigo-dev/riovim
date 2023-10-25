@@ -16,6 +16,7 @@ require("plugins/lspconfig")
 require("plugins/nvim_cmp")
 require("plugins/nvim_tree")
 require("plugins/nvim_treesitter")
+require("plugins/barbar")
 require("plugins/telescope")
 require("plugins/which_key")
 return

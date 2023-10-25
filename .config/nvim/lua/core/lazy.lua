@@ -80,6 +80,19 @@ lazy.setup({
             dependencies = { "nvim-tree/nvim-web-devicons" },
         },
 
+        -- Colorizer
+        {
+            "norcalli/nvim-colorizer.lua",
+            lazy = false,
+            config = function()
+                require("colorizer").setup {
+                    filetypes={ "*" },
+                    buftypes={ "*" },
+                    use_default_options,
+                }
+            end,
+        },
+
         -- Git labels
         {
             "lewis6991/gitsigns.nvim",
@@ -101,6 +114,12 @@ lazy.setup({
             config = function()
                 require("nvim-tree").setup()
             end,
+        },
+
+        -- Tab
+        {
+            "romgrk/barbar.nvim",
+            lazy = false,
         },
 
         -- Statusline
@@ -178,12 +197,6 @@ lazy.setup({
             lazy = false,
         },
 
-        -- Which key
-        {
-            "folke/which-key.nvim",
-            lazy = false,
-        },
-
         -- GitHub copilot
         {
             "github/copilot.vim",
@@ -205,6 +218,12 @@ lazy.setup({
             config = function()
                 vim.g.previm_open_cmd = "firefox"
             end,
+        },
+
+        -- Which key
+        {
+            "folke/which-key.nvim",
+            lazy = false,
         },
     },
 })

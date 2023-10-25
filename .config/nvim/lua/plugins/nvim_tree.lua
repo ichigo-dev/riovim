@@ -205,7 +205,7 @@ nvim_tree.setup {
         },
         open_file = {
             quit_on_open = false,
-            resize_window = true,
+            resize_window = false,
             window_picker = {
                 enable = true,
                 chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
@@ -218,7 +218,7 @@ nvim_tree.setup {
             },
         },
         remove_file = {
-            close_window = true,
+           close_window = true,
         },
     },
     trash = {
