@@ -25,5 +25,4 @@ autocmd("BufEnter", {
     command = "startinsert",
 })
 
-autocmd("TermClose", { command = "q" })
-autocmd("TermClose", { command = "bdelete bprevious" })
+autocmd("TermClose", { command = "bdelete | bprevious" })
