@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
--- RioVim File manager
+-- File manager.
 --------------------------------------------------------------------------------
 
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
@@ -161,6 +161,7 @@ nvim_tree.setup {
     },
     filters = {
         dotfiles = false,
+        git_ignored = false,
         git_clean = false,
         no_buffer = false,
         custom = {},

@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
--- RioVim keymaps
+-- RioVim keymaps.
 --------------------------------------------------------------------------------
 
 local function map(mode, lhs, rhs, opts)
@@ -10,20 +10,20 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- change leader
+-- Changes the leader key to space.
 vim.g.mapleader = " "
 
--- util
+-- Utility.
 map("n", "n", "nzz")
 map("n", "N", "Nzz")
 map("n", "<Esc><Esc>", ":noh<CR>")
 map("i", "jj", "<Esc>")
 
--- copy and paste
+-- Copy and paste to system clipboard.
 map("n", "<Leader>p", '"+p')
 map("n", "<Leader>y", '"+y')
 
--- window
+-- Window movement.
 map("n", "<Leader>s", ":sp<CR>")
 map("n", "<Leader>v", ":vs<CR>")
 map("n", "<C-j>", "<C-w>j")
@@ -47,24 +47,24 @@ map("n", "<Leader>>", "<C-w>>")
 map("n", "<Leader>-", "<C-w>-")
 map("n", "<Leader>+", "<C-w>+")
 
--- tab(buffer)
+-- Tab movement.
 map("n", "<C-[>", "<cmd> BufferLineCyclePrev <CR>")
 map("n", "<C-]>", "<cmd> BufferLineCycleNext <CR>")
 map("n", "<C-x>", "<cmd> bdelete | bprevious <CR>")
-map("n", "<Leader>1", "<cmd> BufferLineGotoBuffer 1 <CR>")
-map("n", "<Leader>2", "<cmd> BufferLineGotoBuffer 2 <CR>")
-map("n", "<Leader>3", "<cmd> BufferLineGotoBuffer 3 <CR>")
-map("n", "<Leader>4", "<cmd> BufferLineGotoBuffer 4 <CR>")
-map("n", "<Leader>5", "<cmd> BufferLineGotoBuffer 5 <CR>")
-map("n", "<Leader>6", "<cmd> BufferLineGotoBuffer 6 <CR>")
-map("n", "<Leader>7", "<cmd> BufferLineGotoBuffer 7 <CR>")
-map("n", "<Leader>8", "<cmd> BufferLineGotoBuffer 8 <CR>")
-map("n", "<Leader>9", "<cmd> BufferLineGotoBuffer 9 <CR>")
+map("n", "<Leader>1", "<cmd> BufferLineGoToBuffer 1 <CR>")
+map("n", "<Leader>2", "<cmd> BufferLineGoToBuffer 2 <CR>")
+map("n", "<Leader>3", "<cmd> BufferLineGoToBuffer 3 <CR>")
+map("n", "<Leader>4", "<cmd> BufferLineGoToBuffer 4 <CR>")
+map("n", "<Leader>5", "<cmd> BufferLineGoToBuffer 5 <CR>")
+map("n", "<Leader>6", "<cmd> BufferLineGoToBuffer 6 <CR>")
+map("n", "<Leader>7", "<cmd> BufferLineGoToBuffer 7 <CR>")
+map("n", "<Leader>8", "<cmd> BufferLineGoToBuffer 8 <CR>")
+map("n", "<Leader>9", "<cmd> BufferLineGoToBuffer 9 <CR>")
 map("n", "<Leader>[", "<cmd> BufferLineCyclePrev <CR>")
 map("n", "<Leader>]", "<cmd> BufferLineCycleNext <CR>")
 map("n", "<Leader>x", "<cmd> bdelete | bprevious <CR>")
 
--- terminal
+-- Terminal mode.
 map("n", "<C-t>", "<cmd> belowright new <CR><cmd> terminal <CR>")
 map("n", "<Leader>t", "<cmd> belowright new <CR><cmd> terminal <CR>")
 map("t", "<C-t>", "<cmd> vsplit <CR><cmd> terminal <CR>")
@@ -76,9 +76,23 @@ map("t", "<C-[>", "<cmd> BufferLineCyclePrev <CR>")
 map("t", "<C-]>", "<cmd> BufferLineCycleNext <CR>")
 map("t", "<C-x>", "<cmd> bdelete | bprevious <CR>")
 
--- plugin
+-- Plugins.
 map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>")
 map("n", "<Leader>n", "<cmd> NvimTreeToggle <CR>")
 map("n", "<Leader>f", "<cmd> Telescope find_files<CR>")
 map("n", "<Leader>g", "<cmd> Telescope live_grep<CR>")
 map("n", "<Leader>d", "<cmd> Telescope diagnostics<CR>")
+
+-- LSP.
+map('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
+map('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+map('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+map('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<CR>')
+map('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+map('n', 'ge', '<cmd>lua vim.diagnostic.open_float()<CR>')
+map('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+map('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')

@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
--- RioVim Treesitter
+-- Treesitter.
 --------------------------------------------------------------------------------
 
 local status_ok, nvim_treesitter = pcall(require, "nvim-treesitter.configs")

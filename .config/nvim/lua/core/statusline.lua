@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
--- RioVim Statusline
+-- RioVim statusline.
 --------------------------------------------------------------------------------
 
 local status_ok, feline = pcall(require, "feline")
@@ -7,8 +7,8 @@ if not status_ok then
     return
 end
 
--- Theme
-local colors = require("core/colors").nord
+-- Theme.
+local colors = require("core/colors")
 
 local vi_mode_colors = {
     NORMAL = colors.cyan,
@@ -27,20 +27,20 @@ local vi_mode_colors = {
     NONE = colors.yellow,
 }
 
--- Providers
+-- Providers.
 local lsp = require "feline.providers.lsp"
 local vi_mode_utils = require "feline.providers.vi_mode"
 
--- LSP diagnostic
+-- LSP diagnostic.
 local lsp_get_diag = function(str)
     local count = vim.lsp.diagnostic.get_count(0, str)
     return (count > 0) and " "..count.." " or ""
 end
 
--- Components
+-- Components.
 local comps = {
 
-    -- vi_mode
+    -- Vi mode.
     vi_mode = {
         left = {
             provider = function()
@@ -60,10 +60,10 @@ local comps = {
         }
     },
 
-    -- File information
+    -- File information.
     file = {
 
-        -- File name
+        -- File name.
         info = {
             provider = {
                 name = "file_info",
@@ -80,7 +80,7 @@ local comps = {
             icon = "",
         },
 
-        -- File type
+        -- File type.
         type = {
             provider = function()
                 local type = vim.bo.filetype:lower()
@@ -105,7 +105,7 @@ local comps = {
             },
         },
 
-        -- Operating System
+        -- Operating System.
         os = {
             provider = function()
                 local os = vim.bo.fileformat:lower()
@@ -134,7 +134,7 @@ local comps = {
             },
         },
 
-        -- File encoding
+        -- File encoding.
         encoding = {
             provider = { name = "file_encoding" },
             hl = {
@@ -152,7 +152,7 @@ local comps = {
             },
         },
 
-        -- Line-column
+        -- Line-column.
         position = {
             provider = { name = "position" },
             hl = {
@@ -174,7 +174,7 @@ local comps = {
             },
         },
 
-        -- Cursor position in %
+        -- Cursor position in %.
         line_percentage = {
             provider = { name = "line_percentage" },
             hl = {
@@ -190,7 +190,7 @@ local comps = {
             },
         },
 
-        -- Simple scrollbar
+        -- Simple scrollbar.
         scroll_bar = {
             provider = { name = "scroll_bar" },
             hl = { fg = colors.fg },
@@ -199,7 +199,7 @@ local comps = {
         },
     },
 
-    -- LSP info
+    -- LSP info.
     diagnos = {
         err = {
             provider = "diagnostic_errors",
@@ -236,7 +236,7 @@ local comps = {
         },
     },
 
-    -- git info
+    -- git info.
     git = {
         branch = {
             provider = "git_branch",
@@ -275,7 +275,7 @@ table.insert(components.active, {})
 table.insert(components.inactive, {})
 table.insert(components.inactive, {})
 
--- Left section
+-- Left section.
 table.insert(components.active[1], comps.vi_mode.left)
 table.insert(components.active[1], comps.file.info)
 table.insert(components.active[1], comps.git.branch)
@@ -284,7 +284,7 @@ table.insert(components.active[1], comps.git.change)
 table.insert(components.active[1], comps.git.remove)
 table.insert(components.inactive[1], comps.file.info)
 
--- Right Section
+-- Right Section.
 table.insert(components.active[2], comps.diagnos.err)
 table.insert(components.active[2], comps.diagnos.warn)
 table.insert(components.active[2], comps.diagnos.hint)
@@ -296,7 +296,7 @@ table.insert(components.active[2], comps.file.encoding)
 table.insert(components.active[2], comps.file.position)
 table.insert(components.active[2], comps.file.line_percentage)
 
--- Call feline
+-- Call feline.
 feline.setup {
     theme = {
         bg = colors.bg,

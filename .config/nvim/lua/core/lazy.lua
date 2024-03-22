@@ -1,8 +1,10 @@
 --------------------------------------------------------------------------------
--- RioVim plugin manager
+-- RioVim plugin manager.
 --
--- Plugin manager: lazy.nvim
--- URL: https://github.com/folke/lazy.nvim
+-- Use the `lazy` plugin manager to load plugins asynchronously.
+--
+-- reference:
+--     https://github.com/folke/lazy.nvim
 --------------------------------------------------------------------------------
 
 -- Bootstrap
@@ -24,38 +26,28 @@ if not status_ok then
     return
 end
 
--- Start setup
+-- Start setup.
 lazy.setup({
     spec = {
 
-        -- Colorschemes
+        ------------------------------------------------------------------------
+        -- Colorscheme.
+        --
+        -- reference:
+        --     https://github.com/nordtheme/vim
+        ------------------------------------------------------------------------
         {
-            "arcticicestudio/nord-vim",
+            "nordtheme/vim",
             lazy = false,
             priority = 1000,
         },
 
-        -- {
-        --     "sainnhe/edge",
-        --     lazy = true,
-        -- },
-
-        -- {
-        --     "navarasu/onedark.nvim",
-        --     lazy = true,
-        -- },
-
-        -- {
-        --     "cocopon/iceberg.vim",
-        --     lazy = true,
-        -- },
-
-        -- {
-        --     "tanvirtin/monokai.nvim",
-        --     lazy = true,
-        -- },
-
-        -- Icons
+        ------------------------------------------------------------------------
+        -- Display icons in file tree, statusline, buffer line, etc.
+        --
+        -- reference:
+        --     https://github.com/nvim-tree/nvim-web-devicons
+        ------------------------------------------------------------------------
         {
             "nvim-tree/nvim-web-devicons",
             lazy = true,
@@ -73,42 +65,28 @@ lazy.setup({
             end,
         },
 
-        -- Dashboard
+        ------------------------------------------------------------------------
+        -- Show the dashboard when starting Nvim.
+        --
+        -- reference:
+        --     https://github.com/goolord/alpha-nvim
+        ------------------------------------------------------------------------
         {
             "goolord/alpha-nvim",
             lazy = true,
             dependencies = { "nvim-tree/nvim-web-devicons" },
         },
 
-        -- Colorizer
-        {
-            "norcalli/nvim-colorizer.lua",
-            lazy = false,
-            config = function()
-                require("colorizer").setup {
-                    filetypes={ "*" },
-                    buftypes={ "*" },
-                    use_default_options,
-                }
-            end,
-        },
-
-        -- Git labels
-        {
-            "lewis6991/gitsigns.nvim",
-            lazy = true,
-            dependencies = {
-                "nvim-lua/plenary.nvim",
-                "nvim-tree/nvim-web-devicons",
-            },
-            config = function()
-                require("gitsigns").setup()
-            end,
-        },
-
-        -- FileTree
+        ------------------------------------------------------------------------
+        -- File tree: Display a list of files. Use the `Ctrl + n` key binding
+        -- to toggle the file tree.
+        --
+        -- reference:
+        --     https://github.com/nvim-tree/nvim-tree.lua
+        ------------------------------------------------------------------------
         {
             "nvim-tree/nvim-tree.lua",
+            lazy = true,
             cmd = { "NvimTreeToggle", "NvimTreeFocus" },
             dependencies = { "nvim-tree/nvim-web-devicons" },
             config = function()
@@ -116,38 +94,65 @@ lazy.setup({
             end,
         },
 
-        -- Bufferline
+        ------------------------------------------------------------------------
+        -- Bufferline: Display a list of buffers.
+        --
+        -- reference:
+        --     https://github.com/akinsho/bufferline.nvim
+        ------------------------------------------------------------------------
         {
             "akinsho/bufferline.nvim",
-            lazy = false,
+            lazy = true,
             dependencies = { "nvim-tree/nvim-web-devicons" },
         },
 
-        -- Statusline
+        ------------------------------------------------------------------------
+        -- Statusline: Display information about the current file.
+        --
+        -- reference:
+        --     https://github.com/freddiehaddad/feline.nvim
+        ------------------------------------------------------------------------
         {
             "freddiehaddad/feline.nvim",
-            lazy = false,
+            lazy = true,
             dependencies = {
                 "nvim-tree/nvim-web-devicons",
                 "lewis6991/gitsigns.nvim",
             },
         },
 
-        -- Treesitter
+        ------------------------------------------------------------------------
+        -- Treesitter: Analyze program code for highlighting, navigation, etc.
+        --
+        -- reference:
+        --     https://github.com/nvim-treesitter/nvim-treesitter
+        ------------------------------------------------------------------------
         {
             "nvim-treesitter/nvim-treesitter",
+            lazy = true,
             cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
             build = ":TSUpdate",
         },
 
-        -- LSP
+        ------------------------------------------------------------------------
+        -- Language Server Protocol (LSP): Help with code completion, etc.
+        -- We use Mason to manage the LSP servers. To enable LSP for a new
+        -- language, run `MasonInstall <language>`.
+        --
+        -- reference:
+        --     https://github.com/neovim/nvim-lspconfig
+        --     https://github.com/williamboman/mason.nvim
+        --     https://github.com/williamboman/mason-lspconfig.nvim
+        --     https://github.com/onsails/lspkind.nvim
+        ------------------------------------------------------------------------
         {
             "neovim/nvim-lspconfig",
-            lazy = false,
+            lazy = true,
         },
 
         {
             "williamboman/mason.nvim",
+            lazy = true,
             cmd = {
                 "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall",
                 "MasonUninstallAll", "MasonLog",
@@ -157,12 +162,24 @@ lazy.setup({
             end,
         },
 
-        { "williamboman/mason-lspconfig.nvim" },
-        { "onsails/lspkind.nvim" },
+        {
+            "williamboman/mason-lspconfig.nvim",
+            lazy = true,
+        },
+        {
+            "onsails/lspkind.nvim",
+            lazy = true,
+        },
 
-        -- Autocomplete
+        ------------------------------------------------------------------------
+        -- Complementing the content proposed by LSP, Copilot, etc.
+        --
+        -- reference:
+        --     https://github.com/hrsh7th/nvim-cmp
+        ------------------------------------------------------------------------
         {
             "hrsh7th/nvim-cmp",
+            lazy = true,
             event = "InsertEnter",
             dependencies = {
                 "L3MON4D3/LuaSnip",
@@ -173,9 +190,17 @@ lazy.setup({
             },
         },
 
-        -- Fazzy finder
+        ------------------------------------------------------------------------
+        -- Finder for discovering files by keyword, file name, etc. File name
+        -- search with `Reader + f`, grep search with `Reader + g`, diagnostic
+        -- search with `Reader + d`.
+        --
+        -- reference:
+        --     https://github.com/nvim-telescope/telescope.nvim
+        ------------------------------------------------------------------------
         {
             "nvim-telescope/telescope.nvim",
+            lazy = true,
             cmd = "Telescope",
             dependencies = { "nvim-lua/plenary.nvim" },
             config = function()
@@ -192,10 +217,30 @@ lazy.setup({
             end,
         },
 
-        -- Git
+        ------------------------------------------------------------------------
+        -- Enable to run Git commands in Nvim and display the status of the
+        -- file changes.
+        --
+        -- reference:
+        --     https://github.com/tpope/vim-fugitive
+        --     https://github.com/lewis6991/gitsigns.nvim
+        --     https://github.com/github/copilot.vim
+        ------------------------------------------------------------------------
         {
             "tpope/vim-fugitive",
             lazy = false,
+        },
+
+        {
+            "lewis6991/gitsigns.nvim",
+            lazy = true,
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+                "nvim-tree/nvim-web-devicons",
+            },
+            config = function()
+                require("gitsigns").setup()
+            end,
         },
 
         -- GitHub copilot
@@ -204,7 +249,31 @@ lazy.setup({
             lazy = false,
         },
 
-        -- Markdown
+        ------------------------------------------------------------------------
+        -- Highlight colors in the files.
+        --
+        -- reference:
+        --     https://github.com/norcalli/nvim-colorizer.lua
+        ------------------------------------------------------------------------
+        {
+            "norcalli/nvim-colorizer.lua",
+            lazy = true,
+            config = function()
+                require("colorizer").setup {
+                    filetypes={ "*" },
+                    buftypes={ "*" },
+                    use_default_options,
+                }
+            end,
+        },
+
+        ------------------------------------------------------------------------
+        -- Enpower markdown editing and preview in browser.
+        --
+        -- reference:
+        --     https://github.com/preservim/vim-markdown
+        --     https://github.com/previm/previm
+        ------------------------------------------------------------------------
         {
             "preservim/vim-markdown",
             lazy = false,
@@ -215,16 +284,47 @@ lazy.setup({
 
         {
             "previm/previm",
-            lazy = false,
+            lazy = true,
             config = function()
                 vim.g.previm_open_cmd = "firefox"
             end,
         },
 
-        -- Which key
+        ------------------------------------------------------------------------
+        -- Display the popup with possible key bindings.
+        --
+        -- reference:
+        --     https://github.com/folke/which-key.nvim
+        ------------------------------------------------------------------------
         {
             "folke/which-key.nvim",
-            lazy = false,
+            lazy = true,
+        },
+
+        ------------------------------------------------------------------------
+        -- Display the rich notice.
+        --
+        -- reference:
+        --     https://github.com/folke/noice.nvim
+        ------------------------------------------------------------------------
+        {
+            "MunifTanjim/nui.nvim",
+            lazy = true,
+        },
+
+        {
+            "rcarriga/nvim-notify",
+            lazy = true,
+        },
+
+        {
+            "folke/noice.nvim",
+            event = "VeryLazy",
+            lazy = true,
+            dependences = {
+                "MunifTanjim/nui.nvim",
+                "rcarriga/nvim-notify",
+            }
         },
     },
 })

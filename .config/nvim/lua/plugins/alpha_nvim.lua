@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
--- RioVim Dashboard
+-- Alpha Nvim.
 --------------------------------------------------------------------------------
 
 local status_ok, alpha = pcall(require, "alpha")
@@ -9,7 +9,7 @@ end
 
 local dashboard = require("alpha.themes.dashboard")
 
--- Footer
+-- Footer.
 local function footer()
     local version = vim.version()
     local print_version = "v" .. version.major .. "." .. version.minor .. "." .. version.patch
@@ -18,7 +18,7 @@ local function footer()
     return print_version .. " - " .. datetime
 end
 
--- Banner
+-- Banner.
 local banner = {
     "                                             ",
     " ██████╗ ██╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
@@ -32,7 +32,7 @@ local banner = {
 
 dashboard.section.header.val = banner
 
--- Menu
+-- Menu.
 dashboard.section.buttons.val = {
     dashboard.button("e", "  New file", ":ene <BAR> startinsert<CR>"),
     dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
