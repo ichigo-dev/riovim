@@ -75,7 +75,7 @@ opt.history = 100
 opt.undofile = true
 opt.confirm = true
 opt.backup = false
-opt.lazyredraw = true
+opt.lazyredraw = false
 opt.synmaxcol = 240
 opt.updatetime = 250
 
