@@ -224,6 +224,8 @@ lazy.setup({
         -- reference:
         --     https://github.com/tpope/vim-fugitive
         --     https://github.com/lewis6991/gitsigns.nvim
+        --     https://github.com/NeogitOrg/neogit
+        --     https://github.com/sindrets/diffview.nvim
         --     https://github.com/github/copilot.vim
         ------------------------------------------------------------------------
         {
@@ -241,6 +243,26 @@ lazy.setup({
             config = function()
                 require("gitsigns").setup()
             end,
+        },
+
+        {
+            "nvim-lua/plenary.nvim",
+            lazy = true,
+        },
+
+        {
+            "sindrets/diffview.nvim",
+            lazy = true,
+        },
+
+        {
+            "NeogitOrg/neogit",
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+                "sindrets/diffview.nvim",
+                "nvim-lua/telescope.nvim",
+            },
+            config = true,
         },
 
         -- GitHub copilot

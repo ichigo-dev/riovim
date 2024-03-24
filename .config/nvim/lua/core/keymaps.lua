@@ -78,10 +78,10 @@ map("t", "<C-x>", "<cmd> bdelete | bprevious <CR>")
 
 -- Plugins.
 map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>")
-map("n", "<Leader>n", "<cmd> NvimTreeToggle <CR>")
 map("n", "<Leader>f", "<cmd> Telescope find_files<CR>")
 map("n", "<Leader>g", "<cmd> Telescope live_grep<CR>")
 map("n", "<Leader>d", "<cmd> Telescope diagnostics<CR>")
+map("n", "<Leader>n", "<cmd> Telescope notify<CR>")
 
 -- LSP.
 map('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
