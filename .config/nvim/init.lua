@@ -19,7 +19,6 @@ require("core/statusline")
 -- Plugin configurations.
 require("plugins/alpha_nvim")
 require("plugins/bufferline")
-require("plugins/indent_blankline")
 require("plugins/lspconfig")
 require("plugins/noice")
 require("plugins/nvim_cmp")

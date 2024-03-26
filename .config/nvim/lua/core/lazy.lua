@@ -313,6 +313,18 @@ lazy.setup({
         },
 
         ------------------------------------------------------------------------
+        -- Display the indent line.
+        --
+        -- reference:
+        --     https://github.com/lukas-reineke/indent-blankline.nvim
+        ------------------------------------------------------------------------
+        {
+            "lukas-reineke/indent-blankline.nvim",
+            main = "ibl",
+            opts = {},
+        },
+
+        ------------------------------------------------------------------------
         -- Display the popup with possible key bindings.
         --
         -- reference:
@@ -335,17 +347,11 @@ lazy.setup({
         },
 
         {
-            "rcarriga/nvim-notify",
-            lazy = true,
-        },
-
-        {
             "folke/noice.nvim",
             event = "VeryLazy",
             lazy = true,
             dependences = {
                 "MunifTanjim/nui.nvim",
-                "rcarriga/nvim-notify",
             }
         },
     },
