@@ -269,6 +269,14 @@ lazy.setup({
         {
             "github/copilot.vim",
             lazy = false,
+            config = function()
+                vim.g.copilot_filetypes = {
+                    gitcommit = true,
+                    markdown = true,
+                    text = true,
+                    yaml = true,
+                }
+            end,
         },
 
         ------------------------------------------------------------------------

@@ -32,3 +32,24 @@ autocmd("BufEnter", {
 })
 
 autocmd("TermClose", { command = "bdelete | bprevious" })
+
+
+--------------------------------------------------------------------------------
+-- Write diff to buffer during git commit.
+--------------------------------------------------------------------------------
+local function append_diff()
+    local git_dir = vim.fn.FugitiveGitDir()
+    local git_root = vim.fn.fnamemodify(git_dir, ":h")
+    local diff = vim.fn.system("git -C " .. git_root .. " diff --cached")
+    local lines = vim.fn.split(diff, "\n")
+    local comment_diff = ""
+    for _, line in ipairs(lines) do
+        comment_diff = comment_diff .. "# " .. line .. "\n"
+    end
+    vim.fn.append(vim.fn.line("$"), vim.fn.split(comment_diff, "\n"))
+end
+
+autocmd("BufReadPost", {
+    pattern = "COMMIT_EDITMSG",
+    callback = append_diff,
+})
